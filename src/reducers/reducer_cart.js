@@ -21,6 +21,9 @@ export default (state = [], action) => {
       for (let i = 0; i < state.length; i++) {
         if (state[i].name === action.payload.name) {
           state[i].added -= 1
+          if (state[i].added === 0) {
+            state.splice(i, 1)
+          }
         }
       }
       return [...state]

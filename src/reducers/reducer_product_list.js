@@ -16,6 +16,15 @@ export default (state = initialState, action) => {
         };
         return product;
       });
+
+    case 'REMOVE_PRODUCT':
+    return state.map(product => {
+      if (product.name === action.payload.name) {
+        return {...product, quantity: product.quantity + 1}
+      };
+      return product;
+    });
+      
     default: return state
   }
 }
