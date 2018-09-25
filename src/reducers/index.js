@@ -6,7 +6,7 @@ import Amount from './reducer_amount';
 const rootReducer = combineReducers({
   productList: ProductList,
   cart: Cart,
-  amount: Amount
+  amount: Amount,
 });
 
 export default rootReducer;

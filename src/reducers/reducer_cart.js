@@ -6,6 +6,7 @@ export default (state = [], action) => {
     for (let i = 0; i < state.length; i++) {
       if (state[i].name === action.payload.name) {
         present = true;
+        state[i].added = state[i].added + 1
       }
     }
 

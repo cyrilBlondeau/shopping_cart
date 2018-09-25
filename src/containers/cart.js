@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 
 class CartList extends Component {
   renderCart() {
-    return this.props.cart.map((product, i) => {
+     return this.props.cart.map((product, i) => {
       return (
         <li key={i}>
           {product.name}<br />
           {product.price} €<br />
-          <p>Quantité :</p>
-          <p>Supprimer</p>
+          Quantité : {product.added + 1}<br />
+          <button>-</button>
         </li>
       )
     })
@@ -30,6 +30,7 @@ class CartList extends Component {
 function mapStateToProps(state) {
   return {
     cart: state.cart,
+    amount: state.amount,
   };
 }
 

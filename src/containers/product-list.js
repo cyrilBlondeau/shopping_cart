@@ -6,12 +6,20 @@ import { addToCart, addToAmount } from '../actions/index';
 class ProductList extends Component {
   renderProducts() {
     return this.props.productList.map((product, i) => {
+      
+      let disabled = false;
+      if (product.quantity === 0) {
+        disabled = true;
+      } else if (product.quantity > 0) {
+        disabled = false
+      }
+
       return (
         <li key={i}>
           {product.name}<br />
           {product.price} €<br />
           Quantité : {product.quantity}<br />
-          <p onClick={() => {this.props.addToCart(product); this.props.addToAmount(product)}}>Ajouter au panier</p>
+          <button type="button" disabled={disabled} onClick={() => {this.props.addToCart(product); this.props.addToAmount(product)}}>Ajouter au panier</button>
         </li>
       )
     })
@@ -20,7 +28,6 @@ class ProductList extends Component {
   render() {
     return (
       <div>
-        <h2>Boutique :</h2>
         <ul>
           {this.renderProducts()}
         </ul>
