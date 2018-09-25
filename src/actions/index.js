@@ -5,16 +5,16 @@ export const addToCart = (product) => {
   };
 }
 
-export const addToAmount = (product) => {
-  return {
-    type: 'ADD_TO_AMOUNT',
-    payload: product.price
-  };
-}
-
 export const removeProduct = (product) => {
   return {
     type: 'REMOVE_PRODUCT',
     payload: product
+  };
+}
+
+export const addToAmount = (product) => {
+  return {
+    type: 'ADD_TO_AMOUNT',
+    payload: product.price
   };
 }

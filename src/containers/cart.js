@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { removeProduct } from '../actions/index';
+import { removeProduct, addToCart, addToAmount } from '../actions/index';
 
 class CartList extends Component {
   renderCart() {
@@ -20,6 +20,7 @@ class CartList extends Component {
           {product.price} €<br />
           Quantité : {product.added}<br />
           <button type="button" disabled={disabled} onClick={() => this.props.removeProduct(product)}>-</button>
+          <button type="button" onClick={() => {this.props.addToCart(product); this.props.addToAmount(product)}}>+</button>
         </li>
       )
     })
@@ -45,7 +46,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ removeProduct }, dispatch);
+  return bindActionCreators({ removeProduct, addToCart, addToAmount }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartList);
