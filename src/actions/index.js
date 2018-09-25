@@ -11,3 +11,10 @@ export const addToAmount = (product) => {
     payload: product.price
   };
 }
+
+export const removeProduct = (product) => {
+  return {
+    type: 'REMOVE_PRODUCT',
+    payload: product
+  };
+}
