@@ -8,7 +8,7 @@ class CartList extends Component {
      return this.props.cart.map((product, i) => {
 
       let disabled = false;
-      if (product.added === 0) {
+      if (product.added === product.quantity) {
         disabled = true;
       } else if (product.added > 0) {
         disabled = false
@@ -19,8 +19,8 @@ class CartList extends Component {
           {product.name}<br />
           {product.price} €<br />
           Quantité : {product.added}<br />
-          <button type="button" disabled={disabled} onClick={() => this.props.removeProduct(product)}>-</button>
-          <button type="button" onClick={() => {this.props.addToCart(product); this.props.addToAmount(product)}}>+</button>
+          <button type="button" onClick={() => this.props.removeProduct(product)}>-</button>
+          <button type="button" disabled={disabled} onClick={() => {this.props.addToCart(product); this.props.addToAmount(product)}}>+</button>
         </li>
       )
     })
