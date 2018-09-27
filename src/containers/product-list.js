@@ -15,11 +15,12 @@ class ProductList extends Component {
       }
 
       return (
-        <li key={i}>
-          {product.name}<br />
-          {product.price} €<br />
-          Quantité : {product.quantity}<br />
-          <button type="button" disabled={disabled} onClick={() => {this.props.addToCart(product); this.props.addToAmount(product)}}>Ajouter au panier</button>
+        <li key={i} className="product">
+          <img src={product.img} alt="Product" /><br />
+          <h4>{product.name}</h4>
+          <h5>{product.price} €</h5>
+          <p>Quantité : {product.quantity}</p>
+          <button type="button" className="addButton" disabled={disabled} onClick={() => {this.props.addToCart(product); this.props.addToAmount(product)}}>Ajouter au panier</button>
         </li>
       )
     })
@@ -27,7 +28,7 @@ class ProductList extends Component {
 
   render() {
     return (
-      <div>
+      <div className="product-list">
         <ul>
           {this.renderProducts()}
         </ul>

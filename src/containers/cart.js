@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { removeProduct, addToCart, addToAmount } from '../actions/index';
+import { Row, Col } from 'react-bootstrap';
 
 class CartList extends Component {
   renderCart() {
@@ -16,11 +17,15 @@ class CartList extends Component {
 
       return (
         <li key={i}>
-          {product.name}<br />
-          {product.price} €<br />
-          Quantité : {product.added}<br />
-          <button type="button" onClick={() => this.props.removeProduct(product)}>-</button>
-          <button type="button" disabled={disabled} onClick={() => {this.props.addToCart(product); this.props.addToAmount(product)}}>+</button>
+        <Row>
+          <p>{product.name} :</p>&nbsp;
+          <p>{product.price} €</p>
+        </Row>
+        <Row>
+          <button type="button" className="buttonMoins" onClick={() => this.props.removeProduct(product)}>-</button>
+          <button type="button" className="buttonPlus" disabled={disabled} onClick={() => {this.props.addToCart(product); this.props.addToAmount(product)}}>+</button>
+          <div className="cartQuantity"><p>{product.added}</p></div>
+        </Row>
         </li>
       )
     })
@@ -28,8 +33,8 @@ class CartList extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Panier :</h2>
+      <div className="cart">
+        <h3>Panier</h3>
         <ul>
           {this.renderCart()}
         </ul>

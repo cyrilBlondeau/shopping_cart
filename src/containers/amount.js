@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Row, Col } from 'react-bootstrap';
 
 class Amount extends Component {
   render() {
     return (
-      <div>
-        <h2>Montant :</h2>
-        <p>{this.props.amount} €</p>
+      <div className="amount">
+        <Row>
+          <p className="labelAmount">Montant : </p>&nbsp;
+          <p className="totalAmount">{this.props.amount} €</p>
+        </Row>
+        <Row>
+          <p className="labelAmount">Articles : </p>&nbsp;
+        </Row>
       </div>
     )
   }
