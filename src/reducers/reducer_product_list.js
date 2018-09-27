@@ -18,12 +18,23 @@ export default (state = initialState, action) => {
       });
 
     case 'REMOVE_PRODUCT':
-    return state.map(product => {
-      if (product.name === action.payload.name) {
-        return {...product, quantity: product.quantity + 1}
-      };
+      return state.map(product => {
+        if (product.name === action.payload.name) {
+          return {...product, quantity: product.quantity + 1}
+        };
       return product;
     });
+
+    case 'DELETE_PRODUCT':
+      return state.map(product => {
+        if (product.name === action.payload.name) {
+          return {...product, quantity: action.payload.quantity}
+        };
+      return product;
+    });
+
+    case 'EMPTY_CART':
+      return state = initialState
       
     default: return state
   }

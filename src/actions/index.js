@@ -18,3 +18,16 @@ export const addToAmount = (product) => {
     payload: product.price
   };
 }
+
+export const emptyCart = () => {
+  return {
+    type: 'EMPTY_CART',
+  };
+}
+
+export const deleteProduct = (product) => {
+  return {
+    type: 'DELETE_PRODUCT',
+    payload: product,
+  };
+}

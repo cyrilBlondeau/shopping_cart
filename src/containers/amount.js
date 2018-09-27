@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Row, Col } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 
 class Amount extends Component {
   render() {
@@ -12,6 +12,7 @@ class Amount extends Component {
         </Row>
         <Row>
           <p className="labelAmount">Articles : </p>&nbsp;
+          <p className="totalAmount">{this.props.quantity}</p>
         </Row>
       </div>
     )
@@ -21,6 +22,7 @@ class Amount extends Component {
 function mapStateToProps(state) {
   return {
     amount: state.amount,
+    quantity: state.quantity
   };
 }
 

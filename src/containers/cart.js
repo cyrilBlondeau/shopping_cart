@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { removeProduct, addToCart, addToAmount } from '../actions/index';
-import { Row, Col } from 'react-bootstrap';
+import { removeProduct, addToCart, addToAmount, emptyCart, deleteProduct } from '../actions/index';
+import { Row } from 'react-bootstrap';
 
 class CartList extends Component {
   renderCart() {
@@ -26,6 +26,9 @@ class CartList extends Component {
           <button type="button" className="buttonPlus" disabled={disabled} onClick={() => {this.props.addToCart(product); this.props.addToAmount(product)}}>+</button>
           <div className="cartQuantity"><p>{product.added}</p></div>
         </Row>
+        <Row>
+          <a className="deleteProduct" onClick={() => this.props.deleteProduct(product)}>Supprimer cet article</a>
+        </Row>
         </li>
       )
     })
@@ -38,6 +41,7 @@ class CartList extends Component {
         <ul>
           {this.renderCart()}
         </ul>
+        <button type="button" className="emptyCart" onClick={() => this.props.emptyCart()}>Vider le panier</button>
       </div>
     )
   }
@@ -51,7 +55,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ removeProduct, addToCart, addToAmount }, dispatch);
+  return bindActionCreators({ removeProduct, addToCart, addToAmount, emptyCart, deleteProduct }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartList);

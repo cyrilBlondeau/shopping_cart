@@ -7,7 +7,7 @@ class Header extends Component {
     return (
       <Row className="header">
         <Col sm={9}>
-          <h1>Ma boutique</h1>
+          <h1>Shopping cart with Redux</h1>
         </Col>
         <Col sm={3}>
           <Amount />

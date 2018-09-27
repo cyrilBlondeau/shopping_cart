@@ -1,4 +1,6 @@
-export default (state = [], action) => {
+let initialState = [];
+
+export default (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_TO_CART':
       let present = false;
@@ -27,6 +29,17 @@ export default (state = [], action) => {
         }
       }
       return [...state]
+
+    case 'DELETE_PRODUCT':
+    for (let i = 0; i < state.length; i++) {
+      if (state[i].name === action.payload.name) {
+        state.splice(i, 1)
+      }
+    }
+    return [...state]
+
+    case 'EMPTY_CART':
+      return state = initialState
 
     default: return state;
   }
