@@ -8,14 +8,13 @@ class ProductList extends Component {
     return this.props.productList.map((product, i) => {
       
       let disabled = false;
-      if (product.quantity === 0) {
-        disabled = true;
-      } else if (product.quantity > 0) {
-        disabled = false
-      }
+      (product.quantity === 0 ? disabled = true : disabled = false);
+
+      let className = '';
+      (product.quantity === 0 ? className = 'product noStock' : className = 'product');
 
       return (
-        <li key={i} className="product">
+        <li key={i} className={className}>
           <img src={product.img} alt="Product" /><br />
           <h4>{product.name}</h4>
           <h5>{product.price} €</h5>

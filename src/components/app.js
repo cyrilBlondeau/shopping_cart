@@ -8,10 +8,10 @@ import '../index.css';
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="app">
         <Header />
         <Row>
-          <Col sm={9} className=" products">
+          <Col sm={9} className="products">
             <ProductList />
           </Col>
           <Col sm={3} className="cart">
